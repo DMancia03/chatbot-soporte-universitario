@@ -17,9 +17,9 @@ const Chatbot = () => {
             setMessages([...messages, userMessage]); //Agregar mensaje del usuario
             
             try{
-                const response = await axios.post('api', {message: userMessage.text});
+                const response = await axios.post('api', {message: userMessage}); //Enviando objeto mensaje del usuario al bot
                 const botMessage = { text: response.data.reply, sender: 'bot' };
-                setMessages([...messages, botMessage]); //Agregar mensaje del bot
+                setMessages([...messages, userMessage, botMessage]); //Agregar mensaje del bot
             }catch(er){
                 console.error(er); //Mostrar error en la consola
                 const errorMessage = { text: 'El bot parece no contestar. Ponte en contacto con soporte técnico.', sender: 'error' };
