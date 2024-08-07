@@ -6,7 +6,12 @@ export async function POST(request) {
     const text = message.text.toLowerCase().replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u'); //Obtenemos la propiedad texto del mensaje y se sanitiza (en minuscula y sin tildes)
 
     // Inicializa una variable de respuesta con un mensaje predeterminado
-    let reply = 'No entiendo tu pregunta.';
+    let reply = [];
+
+    //Saludos basicos
+    if(text.includes('hola') || text.includes('buenos dias') || text.includes('buenas noches') || text.includes('buenas tades') || text.includes('buenas')){
+        reply.push('Hola. ¿En que puedo ayudarte hoy?');
+    }
 
     // Información académica y administrativa
     if (text.includes('calendario academico')) {
@@ -48,15 +53,11 @@ export async function POST(request) {
     } else if (text.includes('alimentacion')) {
         reply = 'Las opciones de alimentación en el campus incluyen la cafetería principal, varios quioscos de comida rápida y el comedor vegetariano en el edificio D.';
 
-    } else if (text.includes('gracias')) {
-        reply = 'Si necesitas más ayuda en el futuro o si tienes alguna otra pregunta o proyecto en el que estés trabajando, no dudes en pedírmelo. ¡Buena suerte y que tengas un excelente día!.';
-   
-    } else if (text.includes('hola')) {
-        reply = 'Dime en que puedo ayuadarte este dia ?';
-
-    // Respuesta por defecto
-    } else {
-        reply = 'No entiendo tu pregunta. Por favor, intenta preguntar de otra manera o visita el portal del estudiante para más información.';
+    }
+    
+    //Despedidas basicas
+    if (text.includes('gracias') || text.includes('adios')) {
+        reply.push('Si necesitas más ayuda en el futuro o si tienes alguna otra pregunta o proyecto en el que estés trabajando, no dudes en pedírmelo. ¡Buena suerte y que tengas un excelente día!.');
     }
 
     // Devuelve la respuesta como un objeto JSON

@@ -14,12 +14,20 @@ const Chatbot = () => {
     //Preguntar al bot
     const handleSend = async () => {
         if(userMessage.text != undefined && userMessage.text.trim()){
-            setMessages([...messages, userMessage]); //Agregar mensaje del usuario
-            
+            setMessages([...messages, userMessage]);
+
             try{
                 const response = await axios.post('api', {message: userMessage}); //Enviando objeto mensaje del usuario al bot
-                const botMessage = { text: response.data.reply, sender: 'bot' };
-                setMessages([...messages, userMessage, botMessage]); //Agregar mensaje del bot
+                const reply = response.data.reply;
+                let botMessages = [];
+
+                reply.map((value, index) => {
+                    const botMessage = { text: value, sender: 'bot' };
+                    botMessages.push(botMessage);
+                });
+                
+                setMessages([...messages, userMessage, ...botMessages]);
+                
             }catch(er){
                 console.error(er); //Mostrar error en la consola
                 const errorMessage = { text: 'El bot parece no contestar. Ponte en contacto con soporte técnico.', sender: 'error' };
