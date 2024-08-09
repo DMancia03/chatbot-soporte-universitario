@@ -7,3 +7,6 @@
 
 ## Presentación del funcionamiento de chatbot
 [Enlace del video](https://drive.google.com/file/d/1bc0c5decj5K5KdRyzdbB2MxKgnD0iBPg/view?usp=sharing) 
+
+## Investigación aplicada 1: Copilot en Visual Studio Code
+[Enlace del PDF](https://drive.google.com/file/d/1rXffjrGjm16_1-_ceG2cAWfL5ptzG4jm/view?usp=sharing) 
