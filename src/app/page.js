@@ -5,7 +5,9 @@ import Chatbot from "@/components/Chatbot";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Bienvenido al Chatbot de Soporte</h1>          
+      <div className={styles.chatbot_title}>
+        <h1 className={styles.title}>Bienvenido al Chatbot de Soporte</h1>   
+      </div>         
       <Chatbot />
     </main>
   );

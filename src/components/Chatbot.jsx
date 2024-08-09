@@ -3,6 +3,8 @@
 import React, {useState, useId} from "react"
 import axios from "axios"
 import Message from "./Message"
+import Styles from '../app/page.module.css'
+import { ST } from "next/dist/shared/lib/utils"
 
 const Chatbot = () => {
     //Mensaje del usuario
@@ -46,14 +48,12 @@ const Chatbot = () => {
     //Componente html
     return (
         <div>
-            <div>
+            <div className={Styles.chatbot_caja}>
                 {messages.map((value, ind) => (<Message msg={value} key={ind} />))}
             </div>
-            <div>
-                <input type="text" name="userMessage" value={userMessage.text} onChange={(e) => createUserMessage(e)} />
-            </div>
-            <div>
-                <button onClick={handleSend}>Enviar</button>
+            <div className={Styles.chatbot_input}>
+                <input type="text" name="userMessage" className={Styles.input_send} value={userMessage.text} onChange={(e) => createUserMessage(e)} />
+                <button className={Styles.btn_send} onClick={handleSend}>Enviar</button>
             </div>
         </div>
     )
