@@ -4,7 +4,7 @@ import React, {useState, useId} from "react"
 import axios from "axios"
 import Message from "./Message"
 import Styles from '../app/page.module.css'
-import { ST } from "next/dist/shared/lib/utils"
+import { scroller, Element } from "react-scroll"
 
 const Chatbot = () => {
     //Mensaje del usuario
@@ -43,6 +43,12 @@ const Chatbot = () => {
     //Crear mensaje del usuario
     const createUserMessage = (e) => {
         setUserMessage({ text: e.target.value, sender: 'user' });
+    }
+
+    //Scroll hasta abajo
+    const toDown = () => {
+        scroller.scrollTo("prueba");
+        console.log("prueba");
     }
 
     //Componente html
