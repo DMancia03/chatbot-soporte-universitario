@@ -16,7 +16,7 @@ const Chatbot = () => {
     //Preguntar al bot
     const handleSend = async () => {
         if(userMessage.text != undefined && userMessage.text.trim()){
-            setMessages([...messages, userMessage]);
+            //setMessages([...messages, userMessage]);
 
             try{
                 const response = await axios.post('api', {message: userMessage}); //Enviando objeto mensaje del usuario al bot
@@ -51,10 +51,10 @@ const Chatbot = () => {
             <div className={Styles.chatbot_caja}>
                 {messages.map((value, ind) => (<Message msg={value} key={ind} />))}
             </div>
-            <div className={Styles.chatbot_input}>
+            <form className={Styles.chatbot_input} action={handleSend}>
                 <input type="text" name="userMessage" className={Styles.input_send} value={userMessage.text} onChange={(e) => createUserMessage(e)} />
                 <button className={Styles.btn_send} onClick={handleSend}>Enviar</button>
-            </div>
+            </form>
         </div>
     )
 }
